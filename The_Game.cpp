@@ -9,12 +9,26 @@ class player
 {
     public:
     string name;
-    int num;
+    int id;
 
+//  initalising the player 
+    player()
+    {
+        name = "";
+        id = 0;
+    }
     player(string name, int n)
     {
         this->name = name;
-        num = n;
+        id = n;
+    }
+
+//  display all the attributes 
+    void display()
+    {
+        cout << "   Player attributes   ";
+        cout << "Name: " << name<< endl;
+        cout << "Player ID: " << id << endl;
     }
 };
 class character
@@ -22,13 +36,20 @@ class character
     public: 
     string name;
     vector<int> pos;
-
+// Initialising the character 
     character(string st, vector<int> pos)
     {
         string name = st;
         this->pos = pos;
     }
 
+//  Display all the attributes
+    void display()
+    {
+        cout << "   character attributes   ";
+        cout << "Name: " << name;
+        cout << "position (x,y): (" << pos[0] << "," << pos[1] << ")" << endl;
+    }
 };
 
 class board
@@ -39,6 +60,23 @@ class board
     int row = 5;
     int column = 5;
 
+
+//  Commands 
+    enum cmd {
+            L = -1,
+            R = 1,
+            F = 1,
+            B = -1
+            };
+    void cmd_list()
+    {
+        cout<< "L : left" << endl;
+        cout<< "R : right" << endl;
+        cout<< "F : forward" << endl;
+        cout<< "B : backward" << endl;
+    }
+
+// Initalising the board
     board()
     {
         for(int i =0; i<row; i++)
@@ -66,6 +104,7 @@ class board
         } 
     }
 
+// Displaying the current state of the board
     void display()
     {
         for(int i = 0; i<row; i++)
